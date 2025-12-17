@@ -5,13 +5,16 @@ import (
 	"strings"
 )
 
-func main() {
-	var confname = "Go conference"
-	const conftickets = 50
-	var remainingtickets = 50
-	var bookings []string
+var confname = "Go conference"
 
-	greet(confname, conftickets, remainingtickets)
+const conftickets = 50
+
+var remainingtickets = 50
+var bookings []string
+
+func main() {
+
+	greet()
 
 	for {
 		firstname, lastname, email, usertickets := getuserInput()
@@ -19,18 +22,10 @@ func main() {
 
 		if isValidEmail && isValidName && isValidTicketNumber {
 
-			remainingtickets = remainingtickets - usertickets
-			bookings = append(bookings, firstname+" "+lastname)
-
-			fmt.Printf(
-				"Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n",
-				firstname, lastname, usertickets, email,
-			)
-
-			fmt.Printf("%v tickets are remaining for %v\n", remainingtickets, confname)
+			bookTicket(usertickets, firstname, lastname, email)
 
 			// Extract first names
-			firstNames := getsFirstNames(bookings)
+			firstNames := getsFirstNames()
 			fmt.Printf("The first names of bookings are: %v\n", firstNames)
 
 			if remainingtickets == 0 {
@@ -66,12 +61,12 @@ func main() {
 
 	}
 }
-func greet(confname string, conftickets int, remainingtickets int) {
+func greet() {
 	fmt.Println("Welcome to the", confname, "booking appli cation")
 	fmt.Println("We have a total of", conftickets, "tickets and", remainingtickets, "are still available.")
 	fmt.Println("Get your tickets to attend")
 }
-func getsFirstNames(bookings []string) []string {
+func getsFirstNames() []string {
 	firstNames := []string{}
 	for _, booking := range bookings {
 		var names = strings.Fields(booking)
@@ -84,6 +79,12 @@ func validateUserInput(firstname string, lastname string, email string, usertick
 	isValidEmail := strings.Contains(email, "@")
 	isValidTicketNumber := usertickets > 0 && usertickets <= remainingtickets
 	return isValidName, isValidEmail, isValidTicketNumber
+}
+func bookTicket(usertickets int, firstname string, lastname string, email string) {
+	remainingtickets = remainingtickets - usertickets
+	bookings = append(bookings, firstname+" "+lastname)
+	fmt.Printf("Thank you %v %v for booking %v tickets.\n You will receive a confirmation email at %v\n", firstname, lastname, usertickets, email)
+	fmt.Printf("%v tickets remaining for %v\n", remainingtickets, confname)
 }
 
 func getuserInput() (string, string, string, int) {
