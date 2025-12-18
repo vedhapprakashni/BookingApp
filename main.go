@@ -45,19 +45,6 @@ func main() {
 			}
 
 		}
-		// city := "London"
-
-		// switch city {
-		// case "New York":
-		// 	fmt.Println("The city that never sleeps")
-		// case "Singapore", "Hong Kong":
-		// 	fmt.Println("One of the busiest ports in the world")
-		// case "London", "Berlin":
-		// 	fmt.Println("The capital of England")
-		// case "Mexcio City":
-		// 	fmt.Println("The largest city in the Americas")
-		// default:
-		// 	fmt.Println("No special information about this city")
 
 	}
 }
