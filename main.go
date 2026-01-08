@@ -11,6 +11,7 @@ const conftickets = 50
 var remainingtickets = 50
 var bookings []string
 
+// dynamic slices not arrays
 func main() {
 
 	greet()
