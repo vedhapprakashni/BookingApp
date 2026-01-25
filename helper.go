@@ -71,8 +71,8 @@ func bookTicket(usertickets int, firstname string, lastname string, email string
 	fmt.Printf("%v tickets remaining for %v\n", remainingtickets, confname)
 }
 
-// getUserInput() takes input from the user
-// Returns first name, last name, email, and ticket count
+// getUserInput() takes input from the user.
+// Returns first name, last name, email, and ticket count.
 func getuserInput() (string, string, string, int) {
 
 	var firstname string
